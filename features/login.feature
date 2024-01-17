@@ -25,3 +25,14 @@ Feature: login feature
     Examples:
       | email                 | password | success                      |
       | marvitest31@gmail.com | Test123  | Te-ai autentificat cu succes |
+
+  @logout
+  Scenario Outline: Logout
+    When I enter an "<email>" address
+    And I enter a "<password>"
+    And I click Acceseaza cont button
+    And I click on Logout button
+    Then I should receive a "<success>" message
+    Examples:
+      | email                 | password | success                    |
+      | marvitest31@gmail.com | Test123  | Te-ai deconectat cu succes |

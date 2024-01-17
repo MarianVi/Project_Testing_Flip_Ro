@@ -1,3 +1,5 @@
+import time
+
 from behave import *
 
 
@@ -16,6 +18,11 @@ def step_impl(context):
     context.login_page.click_login_button()
 
 
+@when('I click on Logout button')
+def step_impl(context):
+    context.login_page.click_logout_button()
+
+
 @then('I should see an "{error}" message')
 def step_impl(context, error):
     error_message_returned = context.login_page.get_error_message()
@@ -24,5 +31,6 @@ def step_impl(context, error):
 
 @then('I should receive a "{success}" message')
 def step_impl(context, success):
+    time.sleep(1)
     success_message_returned = context.login_page.get_success_message()
     assert success == success_message_returned
